@@ -89,7 +89,7 @@ def create_report():
 @app.route('/reports', methods=['GET'])
 def get_reports():
     try:
-        reports = list(reports_collection.find({}, {'_id': 1, 'description': 1, 'image_url': 1, 'created_at': 1, 'full_address': 1, 'localidad': 1, 'barrio': 1, 'correo_electronico': 1}))
+        reports = list(reports_collection.find({}, {'_id': 1, 'description': 1,'full_address': 1, 'localidad': 1, 'barrio': 1, 'correo_electronico': 1, 'image_url': 1, 'created_at': 1}))
         for report in reports:
             report['_id'] = str(report['_id'])  # Convertir ObjectId a string para evitar problemas en el frontend
         return jsonify(reports), 200
